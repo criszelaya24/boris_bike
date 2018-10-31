@@ -1,10 +1,13 @@
-require_relative 'bike'
+require './lib/bike'
 class DockingStation
+attr_reader :bike
 	def release_bike
-		Bike.new
+		raise 'No bike available' if @bike == 0
+		@bike
 	end
 
-	def dock
-		
+	def dock(bike)
+		fail 'Docking station full' if @bike
+		@bike = bike
 	end
 end
